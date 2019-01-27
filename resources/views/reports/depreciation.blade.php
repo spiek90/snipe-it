@@ -8,12 +8,24 @@
 
 {{-- Page content --}}
 @section('content')
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>{{ \App\Helpers\Helper::formatCurrencyOutput($depreciationTotal) }}</h3>
+                    <p>{{ trans('admin/depreciations/general.depreciations_total') }}</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-money"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-12">
             <div class="box box-default">
                 <div class="box-body">
-
 
                     @if (($depreciations) && ($depreciations->count() > 0))
                         <div class="table-responsive">
@@ -49,10 +61,13 @@
                                     <th class="col-sm-1">{{ trans('admin/hardware/table.serial') }}</th>
                                     <th class="col-sm-1">{{ trans('admin/depreciations/general.depreciation_name') }}</th>
                                     <th class="col-sm-1">{{ trans('admin/depreciations/general.number_of_months') }}</th>
-                                    <th class="col-sm-1">{{ trans('admin/hardware/table.checkoutto') }}</th>
-                                    <th class="col-sm-1">{{ trans('admin/hardware/table.location') }}</th>
+                                    <th class="col-sm-1"
+                                        data-visible="false">{{ trans('admin/hardware/table.checkoutto') }}</th>
+                                    <th class="col-sm-1"
+                                        data-visible="false">{{ trans('admin/hardware/table.location') }}</th>
                                     <th class="col-sm-1">{{ trans('admin/hardware/table.purchase_date') }}</th>
-                                    <th class="col-sm-1">{{ trans('admin/hardware/table.eol') }}</th>
+                                    <th class="col-sm-1"
+                                        data-visible="false">{{ trans('admin/hardware/table.eol') }}</th>
                                     <th class="col-sm-1 align-right">{{ trans('admin/hardware/table.purchase_cost') }}</th>
                                     <th class="col-sm-1 align-right">{{ trans('admin/hardware/table.book_value') }}</th>
                                     <th class="col-sm-1 align-right">{{ trans('admin/hardware/table.monthly_depreciation') }}</th>
