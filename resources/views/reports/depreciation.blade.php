@@ -131,14 +131,14 @@
                     {{ \App\Helpers\Helper::formatCurrencyOutput($asset->getDepreciatedValue()) }}
                   </td>
                   <td class="align-right">
-                    @if ($asset->model->depreciation)
+                    @if ($asset->model->depreciation and $asset->getDepreciatedValue() > 0)
                       @if ($asset->location && $asset->location->currency)
                       {{ $asset->location->currency }}
                       @else
                       {{ $snipeSettings->default_currency }}
                       @endif
 
-                      {{ \App\Helpers\Helper::formatCurrencyOutput(($asset->model->eol > 0 ? ($asset->purchase_cost / $asset->model->eol) : 0)) }}
+                        {{ \App\Helpers\Helper::formatCurrencyOutput(($asset->model->depreciation->months > 0 ? ($asset->purchase_cost / $asset->model->depreciation->months) : 0)) }}
                     @endif
                   </td>
                   <td class="align-right">
